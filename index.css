@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "sigmar";
+    src: url(Font/Sigmar-Regular.ttf) format(truetype);
+}
+*{
+    margin: 0px ;
+    padding: 0px ;
+    box-sizing: border-box ;
+    text-decoration: none ;
+    list-style-type: none ;
+}
+body {
+    background-image: url(Background/back.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
+.dis-flex {
+    display: flex ;
+    justify-content: center; 
+    align-items: center;
+}
+nav .header {
+    width: 100%;
+    height: 90px;
+    backdrop-filter: blur(5px);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+    background-color: #ffffff2b;
+}
+nav .header p {
+    font-family: "sigmar";
+    color: #e2ffd3;
+    font-size: 70px;
+}
+section {
+    width: 100%;
+    height: 85vh; 
+}
+.wrapper {
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    background: #f8f8f8;  
+    border-radius: 10px;
+}
+.cards {
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cards .card {
+    cursor: pointer;
+    position: relative;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    width: calc(100% / 4 - 10px);
+    height: calc(100% / 4 - 10px); 
+}
+.card.anime .back_view {
+    animation: scale .7s linear;
+}
+.cards .card .view {
+    width: 100%;
+    height: 100%; 
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    transition: transform .27s ease;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+}
+.card .front_view {
+    background-color: #002c009e;
+} 
+.card .front_view i {
+    font-size: 40px;
+    color: #fff;
+} 
+.card .back_view {
+    transform: rotateY(-180deg);
+}
+.card .back_view img {
+    border-radius: 7px;
+    max-width: 68px;
+}
+.card.active .front_view {
+    transform: rotateY(180deg);
+}
+.card.active .back_view {
+    transform: rotateY(0);
+}
+.card.shake .back_view {
+    animation: shake .4s ease-in-out;
+}
+/* animation section */
+@keyframes shake {
+    0% , 100% {transform: translateX(0);}
+    20% {transform: translateX(-13px);}
+    40% {transform: translateX(13px);}
+    60% {transform: translateX(-8px);}
+    80% {transform: translateX(8px);}
+}
+@keyframes scale {
+    0% {transform: scale(1);}
+    100% {transform: scale(1.2);}
+}
+@media screen and (max-width: 450px) {
+    .wrapper {
+        width: 330px;
+        height: 330px; 
+    }
+    nav .header p {
+        font-size: 35px;
+    }
+    
+}
